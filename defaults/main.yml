@@ -73,13 +73,6 @@ openvpn_key_org: Fort-Funston
 openvpn_key_email: me@myhost.mydomain
 openvpn_key_size: 1024
 
-# Make clients certificate
-openvpn_clients:
-  - client
-
-# Revoke clients certificates
-openvpn_clients_revoke: []
-
 # Use PAM authentication
 openvpn_use_pam: true
 openvpn_use_pam_users: []
@@ -97,10 +90,3 @@ openvpn_ldap_follow_referrals: 'false'
 # Use simple authentication (default is disabled)
 openvpn_simple_auth: false
 openvpn_simple_auth_password: ""
-
-# Whether to embed CA, cert, and key info inside client OVPN config file.
-openvpn_unified_client_profiles: false
-
-# Download the created client credentials to the specified directory
-openvpn_download_clients: false
-openvpn_download_dir: "client_credentials/"
