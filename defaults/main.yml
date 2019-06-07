@@ -1,13 +1,14 @@
 ---
 # Duplicated from cert_authority
 export_server_file_name: "ovpn_server_certificates.tar.gz"
+export_client_file_name: "ovpn_client_certificates.tar.gz"
 
 # Set to 'false' to completely disable the role
 openvpn_enabled: true
 
 openvpn_etcdir: /etc/openvpn
 openvpn_keydir: "{{ openvpn_etcdir }}/keys"
-openvpn_client_config_dir:
+openvpn_client_config_dir: "{{ openvpn_etcdir }}/clients"
 
 # Set to 'true' to install openvpn from the upstream repo
 openvpn_use_external_repo: false

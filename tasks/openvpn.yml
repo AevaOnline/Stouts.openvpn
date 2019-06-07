@@ -20,6 +20,25 @@
     owner: root
     group: root
 
+- name: Create client config dir
+  file:
+    dest: "{{ openvpn_client_config_dir }}"
+    state: directory
+  when: openvpn_client_config_dir is defined
+
+- name: Upload client keys
+  unarchive:
+    src: "{{ export_client_file_name }}"
+    dest: "{{ openvpn_client_config_dir }}"
+    mode: 0600
+    owner: root
+    group: root
+    exclude:
+      - "*/ca.crt"
+      - "*/ta.key"
+      - "*/*.ovpn"
+  when: openvpn_client_config_dir is defined
+
 - include_tasks: "{{ ansible_os_family }}/setup-bridge.yml"
 
 - include: firewall.yml
