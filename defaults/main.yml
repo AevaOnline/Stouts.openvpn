@@ -7,6 +7,7 @@ openvpn_enabled: true
 
 openvpn_etcdir: /etc/openvpn
 openvpn_keydir: "{{ openvpn_etcdir }}/keys"
+openvpn_client_config_dir:
 
 # Set to 'true' to install openvpn from the upstream repo
 openvpn_use_external_repo: false
