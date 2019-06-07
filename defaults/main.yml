@@ -1,4 +1,6 @@
 ---
+# Duplicated from cert_authority
+export_server_file_name: "ovpn_server_certificates.tar.gz"
 
 # Set to 'false' to completely disable the role
 openvpn_enabled: true
