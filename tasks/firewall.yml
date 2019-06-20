@@ -74,3 +74,17 @@
   when:
     - iptables_nat_rules.stdout.find("vpn_masquerade") == -1
     - not openvpn_server
+
+- name: Allow SNATing incoming vpn traffic
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    source: "{{ item }}"
+    to_source: "{{ openvpn_private_ip }}"
+    out_interface: "{{ openvpn_out_interface | default(omit, true) }}"
+    jump: SNAT
+    comment: vpn_snat
+  with_items: "{{ openvpn_snat_ranges }}"
+  notify: openvpn save iptables
+  when:
+    - iptables_nat_rules.stdout.find("vpn_snat") == -1
